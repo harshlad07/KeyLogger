@@ -1,41 +1,66 @@
-# 🛡️ Python Keylogger with Email Reporting
+## 🛡️ KeyWatch - Python-Based Keylogger with Email Reporting and GUI
 
-This is a simple yet powerful keylogger written in Python.
-It captures every keystroke made on the keyboard and periodically sends the logged data to your Gmail account.
-This tool is intended strictly for **educational and ethical purposes** such as parental control, penetration testing, and system monitoring (with proper authorization).
+**KeyWatch** is a simple yet powerful keylogger tool written in Python for educational and ethical testing purposes. It logs keystrokes, stores logs locally, and periodically sends reports to your email. The application also comes with a user-friendly **GUI** for easy control and configuration.
 
----
-
-## 📦 Features
-
-- ✅ Records all keyboard keystrokes
-- ✅ Handles special keys like Enter, Backspace, Tab, etc.
-- ✅ Sends logs to your Gmail every X seconds
-- ✅ Stores logs locally as backup
-- ✅ Timestamped logs for easier tracking
-- ✅ Graceful error handling
-- ✅ Simple and modular code structure
+> ⚠️ This tool is strictly for **educational purposes** and authorized environments only. Do not use it unethically or without proper consent.
 
 ---
 
-## 🚀 Usage
+## 🧠 Features
 
-1. Clone the repository
-git clone https://github.com/yourusername/python-keylogger.git
-cd python-keylogger
+- ✅ Logs all keyboard input (including special keys like Enter, Shift, etc.)
+- 📧 Sends logs via Gmail SMTP at regular intervals
+- 💾 Saves logs locally in a `Captured_Logs` folder
+- 🧵 Runs in a background thread without blocking the UI
+- 🖥️ User-friendly GUI built using `tkinter`
+- 🛑 Graceful exit when the user closes the application window
 
-2. Open main.py and add your Gmail & App Password
-   Replace:
-   EMAIL_ADDRESS = "your_email@gmail.com"
-   EMAIL_PASSWORD = "your_app_password"
+---
 
-3. Run the keylogger
+## ⚙️ Requirements
+
+- Python 3.8+
+- Required Python libraries:
+  - `pynput`
+  - `tkinter` (standard with Python)
+  
+Install requirements with:
+
+```
+pip install -r requirements.txt
+```
+
+---
+
+## 🚀 How to Use
+1. Clone the Repository
+```
+git clone https://github.com/harshlad07/KeyLogger.git
+cd KeyLogger
+```
+2. Run the GUI Application
+```
 python main.py
+```
+3. Input Required Details
+Email: Your Gmail address
+App Password: Generate an App Password here
+Interval: How often (in seconds) to send the log to your email
 
 ---
 
-## ✅ What happens:
+## 📦 Output
+Logs are stored in the Captured_Logs/ directory.
+Emails will contain a timestamped snapshot of keystrokes captured since the last interval.
 
-- Keystrokes are captured.
-- Logs are sent to your email every 2 minutes (or the interval you set).
-- If email sending fails, logs are saved locally.
+---
+
+## 🤝 Contributing
+Contributions are welcome! Feel free to fork, modify, and submit a pull request. Please ensure your changes are ethical and improve the educational value of the project.
+
+---
+
+## ⚠️**DISCLAIMER** 🛑
+THIS TOOL IS FOR EDUCATIONAL PURPOSES ONLY. DO NOT USE IT WITHOUT PROPER AUTHORIZATION.
+
+---
